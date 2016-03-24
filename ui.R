@@ -1,26 +1,29 @@
 library(shiny)
 library(ggplot2)
 
-dataset <- diamonds
-
 shinyUI(pageWithSidebar(
-  headerPanel("Diamonds Explorer"),
+  headerPanel("Stable Distribution Explorer"),
   
   sidebarPanel(
     sliderInput(
-      'sampleSize', 'Sample Size', min = 1, max = nrow(dataset),
-      value = min(1000, nrow(dataset)), step = 500, round = 0
+      'alphaParam', 'Index parameter alpha', min = 0.0000001, max = 2,
+      value = 1, step = 0.01, round = FALSE
     ),
     
-    selectInput('x', 'X', names(dataset)),
-    selectInput('y', 'Y', names(dataset), names(dataset)[[2]]),
-    selectInput('color', 'Color', c('None', names(dataset))),
+    sliderInput(
+      'betaParam', 'Skewness parameter beta', min = -1, max = 1,
+      value = 0, step = 0.01, round = FALSE
+    ),
     
-    checkboxInput('jitter', 'Jitter'),
-    checkboxInput('smooth', 'Smooth'),
+    sliderInput(
+      'gammaParam', 'Scale parameter gamma', min = -100, max = 100,
+      value = 0, step = 1, round = 0
+    ),
     
-    selectInput('facet_row', 'Facet Row', c(None = '.', names(dataset))),
-    selectInput('facet_col', 'Facet Column', c(None = '.', names(dataset)))
+    sliderInput(
+      'deltaParam', 'Location (or Shift) parameter delta', min = -100, max = 100,
+      value = 0, step = 1, round = 0
+    )
   ),
 
   mainPanel(
