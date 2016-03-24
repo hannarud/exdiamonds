@@ -6,18 +6,18 @@ shinyUI(pageWithSidebar(
   
   sidebarPanel(
     sliderInput(
-      'alphaParam', 'Index parameter alpha', min = 0.0000001, max = 2,
+      'alphaParam', 'Index parameter alpha', min = 0.01, max = 2,
       value = 1, step = 0.01, round = FALSE
     ),
     
     sliderInput(
-      'betaParam', 'Skewness parameter beta', min = -1, max = 1,
+      'betaParam', 'Skewness parameter beta', min = -0.99, max = 0.99,
       value = 0, step = 0.01, round = FALSE
     ),
     
     sliderInput(
-      'gammaParam', 'Scale parameter gamma', min = -100, max = 100,
-      value = 0, step = 1, round = 0
+      'gammaParam', 'Scale parameter gamma', min = 0.01, max = 100,
+      value = 1, step = 1, round = 0
     ),
     
     sliderInput(
